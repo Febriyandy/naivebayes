@@ -1,12 +1,14 @@
 <?php
-session_start();
-if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit;
-}
 
-// koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "pip");
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "pip";
+$port = 3307;
+
+// Membuat koneksi
+$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
 // cek koneksi
 if (!$conn) {
