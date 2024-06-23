@@ -180,6 +180,7 @@ if (isset($_GET['search'])) {
             </div>
         </div>
     </div>
+    
 
     <nav class="h-16 w-full fixed items-center z-[1000] flex bg-white shadow-md">
         <img src="image/logo.png" class="w-14 ml-5" alt="">
