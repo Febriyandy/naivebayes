@@ -77,7 +77,8 @@ if (isset($_GET['search'])) {
                     <button class="bg-blue-900 w-14 text-white py-2 ml-5 rounded-md" type="submit">Cari</button>
                 </form>
             </div>
-            <div class="overflow-auto w-11/12 mx-auto">
+            
+            <div class="overflow-auto w-11/12 h-96 mx-auto">
                 <table class="w-1/2 bg-white border border-gray-200 mt-5">
                     <thead>
                         <tr>
@@ -116,8 +117,8 @@ if (isset($_GET['search'])) {
                             echo "<td class='px-4 py-2 border'>{$row['penerima_KKS']}</td>";
                             echo "<td class='px-4 py-2 border'>{$row['keterangan']}</td>";
                             echo "<td class='px-4 py-6 h-auto border flex gap-3'>
-                                    <a class='text-white py-2 px-4 rounded-md  bg-blue-600 hover:underline' href='edittraining.php?id={$row['id_training']}' title='Edit'>Edit</a>
-                                    <a class='text-white py-2 px-4 rounded-md  bg-red-600 hover:underline' href='hapustraining.php?id={$row['id_training']}' title='Hapus' onclick='return confirmDelete();'>Hapus</a>
+                                    <a class='text-white py-2 px-4 rounded-md  bg-blue-600 hover:underline' href='edittraining.php?id={$row['id_siswa']}' title='Edit'>Edit</a>
+                                    <a class='text-white py-2 px-4 rounded-md  bg-red-600 hover:underline' href='hapustraining.php?id={$row['id_siswa']}' title='Hapus' onclick='return confirmDelete();'>Hapus</a>
                                   </td>";
                             echo "</tr>";
                             $no++;
@@ -132,6 +133,116 @@ if (isset($_GET['search'])) {
         <img src="image/logo.png" class="w-14 ml-5" alt="">
         <h1 class="font-bold text-lg text-blue-900 pl-4">SMA MUHAMMADIYAH TANJUNGPINANG</h1>
     </nav>
+    <!-- Modal Form -->
+    <div id="formTambah" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-1/2 h-4/5 overflow-y-auto">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold">Tambah Data</h2>
+                        <button onclick="toggleForm()" class="text-red-500 text-2xl">&times;</button>
+                    </div>
+                    <form action="proses_tambah_data.php" method="post">
+                        <div class="mb-4">
+                            <label for="id_siswa" class="block text-sm font-medium text-gray-700">NISN Siswa</label>
+                            <input type="text" name="id_siswa" id="id_siswa" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="nama_siswa" class="block text-sm font-medium text-gray-700">Nama Siswa</label>
+                            <input type="text" name="nama_siswa" id="nama_siswa" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="jenis_tinggal" class="block text-sm font-medium text-gray-700">Jenis Tinggal:</label>
+                            <select name="jenis_tinggal" id="jenis_tinggal" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Bersama Orang Tua">Bersama Orang Tua</option>
+                                <option value="Panti Asuhan">Panti Asuhan</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="alat_transportasi" class="block text-sm font-medium text-gray-700">Alat Transportasi:</label>
+                            <select name="alat_transportasi" id="alat_transportasi" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Jalan Kaki">Jalan Kaki</option>
+                                <option value="Sepeda Motor">Sepeda Motor</option>
+                                <option value="Angkutan Umum">Angkutan Umum</option>
+                                <option value="Mobil Pribadi">Mobil Pribadi</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="penerima_KPS" class="block text-sm font-medium text-gray-700">Penerima KPS:</label>
+                            <select name="penerima_KPS" id="penerima_KPS" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Ya">Ya</option>
+                                <option value="Tidak">Tidak</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="pekerjaan_ayah" class="block text-sm font-medium text-gray-700">Pekerjaan Ayah:</label>
+                            <select name="pekerjaan_ayah" id="pekerjaan_ayah" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Buruh">Buruh</option>
+                                <option value="Nelayan">Nelayan</option>
+                                <option value="Sudah Meninggal">Sudah Meninggal</option>
+                                <option value="Petani">Petani</option>
+                                <option value="PNS">PNS</option>
+                                <option value="Karyawan Swasta">Karyawan Swasta</option>
+                                <option value="Tidak Bekerja">Tidak Bekerja</option>
+                                <option value="Pedagang Kecil">Pedagang Kecil</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="penghasilan_ayah" class="block text-sm font-medium text-gray-700">Penghasilan Ayah/Bulan:</label>
+                            <select name="penghasilan_ayah" id="penghasilan_ayah" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
+                                <option value="Rendah">Rendah (< 1 juta)</option>
+                                <option value="Sedang">Sedang (1 juta - 2 juta)</option>
+                                <option value="Tinggi">Tinggi (> 2 juta)</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="pekerjaan_ibu" class="block text-sm font-medium text-gray-700">Pekerjaan Ibu:</label>
+                            <select name="pekerjaan_ibu" id="pekerjaan_ibu" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Sudah Meninggal">Sudah Meninggal</option>
+                                <option value="PNS/Polwan">PNS/Polwan</option>
+                                <option value="Karyawan Swasta">Karyawan Swasta</option>
+                                <option value="Tidak Bekerja">Tidak Bekerja</option>
+                                <option value="Pedagang Kecil">Pedagang Kecil</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="penghasilan_ibu" class="block text-sm font-medium text-gray-700">Penghasilan Ibu/Bulan:</label>
+                            <select name="penghasilan_ibu" id="penghasilan_ibu" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
+                                <option value="Rendah">Rendah (< 1 juta)</option>
+                                <option value="Sedang">Sedang (1 juta - 2 juta)</option>
+                                <option value="Tinggi">Tinggi (> 2 juta)</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="penerima_KIP" class="block text-sm font-medium text-gray-700">Penerima KIP:</label>
+                            <select name="penerima_KIP" id="penerima_KIP" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Ya">Ya</option>
+                                <option value="Tidak">Tidak</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="penerima_KKS" class="block text-sm font-medium text-gray-700">Penerima KKS:</label>
+                            <select name="penerima_KKS" id="penerima_KKS" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Ya">Ya</option>
+                                <option value="Tidak">Tidak</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="keterangan" class="block text-sm font-medium text-gray-700">Keterangan:</label>
+                            <select name="keterangan" id="keterangan" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Layak">Layak</option>
+                                <option value="Tidak Layak">Tidak Layak</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-900 text-white py-2 rounded-md">Simpan Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
     <script>
         function toggleForm() {
             document.getElementById('formTambah').classList.toggle('hidden');

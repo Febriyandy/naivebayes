@@ -1,12 +1,13 @@
 <?php
-session_start();
-if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit;
-}
 
 // koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "pip");
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "pip";
+$port = 3307;
+
+$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
 // ambil data training berdasarkan ID yang dikirimkan melalui URL
 if (isset($_GET['id'])) {
