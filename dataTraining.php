@@ -63,6 +63,10 @@ if (isset($_GET['search'])) {
                 <a class="text-white px-5" href="logout.php">Logout</a>
             </div>
         </div>
+        <nav class="h-16 w-full fixed items-center z-[1000] flex bg-white shadow-md">
+        <img src="image/logo.png" class="w-14 ml-5" alt="">
+        <h1 class="font-bold text-lg text-blue-900 pl-4">SMA MUHAMMADIYAH TANJUNGPINANG</h1>
+    </nav>
         <div class="w-5/6 h-screen ml-64 mt-18 flex flex-col bg-gray-100">
             <h1 class="mt-24 font-bold ml-3 text-2xl">Data Training</h1>
             <div class="flex justify-between">
@@ -168,6 +172,13 @@ if (isset($_GET['search'])) {
                             </select>
                         </div>
                         <div class="mb-4">
+                            <label for="penerima_KKS" class="block text-sm font-medium text-gray-700">Penerima KKS:</label>
+                            <select name="penerima_KKS" id="penerima_KKS" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                                <option value="Ya">Ya</option>
+                                <option value="Tidak">Tidak</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
                             <label for="keterangan" class="block text-sm font-medium text-gray-700">Keterangan:</label>
                             <select name="keterangan" id="keterangan" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
                                 <option value="Layak">Layak</option>
@@ -182,10 +193,7 @@ if (isset($_GET['search'])) {
     </div>
     
 
-    <nav class="h-16 w-full fixed items-center z-[1000] flex bg-white shadow-md">
-        <img src="image/logo.png" class="w-14 ml-5" alt="">
-        <h1 class="font-bold text-lg text-blue-900 pl-4">SMA MUHAMMADIYAH TANJUNGPINANG</h1>
-    </nav>
+   
 
     <script>
         function toggleForm() {
