@@ -39,10 +39,10 @@ $nama_check_query = "SELECT * FROM data_training WHERE nama_siswa='$nama_siswa' 
 $nama_check_result = mysqli_query($conn, $nama_check_query);
 $nama_exists = mysqli_fetch_assoc($nama_check_result);
 
-// cek apakah data dengan field-field lainnya sudah ada di database
+// Cek apakah data dengan field-field lainnya sudah ada di database
 $duplicate_check_query = "SELECT * FROM data_training WHERE 
                           jenis_tinggal='$jenis_tinggal' AND
-                          alat_transportasi'$alat_transportasi' AND
+                          alat_transportasi='$alat_transportasi' AND
                           penerima_KPS='$penerima_KPS' AND
                           pekerjaan_ayah='$pekerjaan_ayah' AND
                           penghasilan_ayah='$penghasilan_ayah' AND
@@ -54,7 +54,14 @@ $duplicate_check_query = "SELECT * FROM data_training WHERE
                           LIMIT 1";
 
 $duplicate_check_result = mysqli_query($conn, $duplicate_check_query);
-$duplicate_exists = mysqli_fetch_assoc($duplicate_check_result);
+
+if ($duplicate_check_result && mysqli_num_rows($duplicate_check_result) > 0) {
+    $duplicate_exists = mysqli_fetch_assoc($duplicate_check_result);
+    // Tangani jika duplikat ditemukan, misalnya menampilkan pesan atau melakukan tindakan lain
+} else {
+    $duplicate_exists = false;
+    // Tangani jika tidak ada duplikat, misalnya melanjutkan proses penyimpanan data baru
+}
 
 if ($id_exists) {
     echo "<script>alert('NISN siswa sudah ada di database. Silakan gunakan NISN Mahasiswa yang berbeda.');</script>";
