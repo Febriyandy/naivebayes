@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <img src="image/bg.jpeg" alt="bg" class="w-full object-cover h-screen">
     <div class="absolute bg-white/50 backdrop-filter backdrop-blur-md p-8 rounded-lg text-center max-w-sm w-full">
         <img src="image/logo.png" alt="Logo" class="mx-auto mb-4 w-24 h-auto">
-        <h1 class="text-base text-white font-body">SMA Muhammadiyah</h1>
+        <h1 class="text-base text-white font-body">SMA Muhammadiyah Tanjungpinang</h1>
         <p class="text-2xl font-bold text-white font-body mb-4">Login Admin</p>
         <form action="" method="POST" class="space-y-4">
             <div>

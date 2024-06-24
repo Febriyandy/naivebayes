@@ -92,7 +92,7 @@ while ($row_info = mysqli_fetch_assoc($result_info)) {
         ?>
     </div>
     </div>
-    <div class="flex w-full">
+    <div class="flex w-full mt-5">
  <!-- Formulir Uji Data -->
  <form class="form-pengujian" action="pengujian.php" method="post">
             <?php
@@ -113,7 +113,7 @@ while ($row_info = mysqli_fetch_assoc($result_info)) {
             ?>
         
         <!-- Formulir Uji Data -->
-        <div class="max-w-xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="w-96 ml-5 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <form class="form-pengujian" action="pengujian.php" method="post">
                 <?php foreach ($manualLabels as $key => $label) : ?>
                     <div class="mb-4">
@@ -177,7 +177,7 @@ while ($row_info = mysqli_fetch_assoc($result_info)) {
                 </div>
             </form>
     </div>
-<div class="w-1/2 mt-5 pl-5 flex flex-col gap-10">
+<div class="w-1/2  pl-5 flex flex-col gap-10">
  
 
     <div class="w-96 h-auto rounded-md bg-white shadow-md p-5">
