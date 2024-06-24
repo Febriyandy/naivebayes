@@ -5,7 +5,13 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 // Koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "beasiswa_nb");
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "pip";
+$port = 3307;
+
+$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
 // Query untuk mengambil data dari tabel data_testing
 $query = "SELECT * FROM data_testing";
